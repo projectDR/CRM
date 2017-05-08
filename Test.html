@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<body>
+<form class = "form-horizontal">
+    <h1 class="h1">Форма заявки</h1>
+    <div class="form-group">
+        <label for="username" class="col-sm-3 control-label">Имя пользователя</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id = "username" placeholder="Dima pedar">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="department" class="col-sm-3 control-label">Отдел</label>
+        <div class="col-sm-5">
+            <select class="form-control" id = "department">
+                <option>dep1</option>
+                <option>dep2</option>
+                <option>dep3</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="position" class="col-sm-3 control-label">Должность</label>
+        <div class="col-sm-5">
+            <select class="form-control" id = "position">
+                <option>vac1</option>
+                <option>vac2</option>
+                <option>vac3</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-5"></div>
+    </div>
+    <div class="form-group">
+        <label for="brtype" class="col-sm-3 control-label">Тип поломки ануса</label>
+        <div class="col-sm-5">
+            <select class="form-control" id = "brtype">
+                <option>breakage1</option>
+                <option>breakage2</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="urgency" class="col-sm-3 control-label">Срочность</label>
+        <div class="col-sm-5">
+            <select class="form-control" id = "urgency">
+                <option>small</option>
+                <option>hurry</option>
+                <option>Zhopa-Gorit</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description" class="col-sm-3 control-label">Опишите </label>
+        <div class="col-sm-5">
+            <textarea class="form-control" rows="10" id = "description"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-3">
+            <button class="btn">Отправить заявку</button>
+        </div>
+    </div>
+</form>
+<a href="#openModal">Открыть модальное окно</a>
+<div id="openModal" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <h2>Модальное окно</h2>
+        <p>Пример простого модального окна, которое может быть создано с использованием CSS3.</p>
+        <p>Его можно использовать в широком диапазоне, начиная от вывода сообщений и заканчивая формой регистрации.</p>
+    </div>
+</div>
+</body>
+</html>
