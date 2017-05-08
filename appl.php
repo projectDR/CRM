@@ -3,12 +3,6 @@
     require_once("classes/DBWorking_class.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="ru">
-<script src="js/jquery-3.2.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<body>
 <form class = "form-horizontal">
     <h1 class="h1">Форма заявки</h1>
     <div class="form-group">
@@ -138,6 +132,3 @@
             )
         });
 </script>
-
-</body>
-</html>

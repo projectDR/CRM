@@ -12,7 +12,7 @@ $result = $db->query("select a.id, urgency, department_name, at.appl_type_name
 foreach ($result as $item)
 {
     if($item[1]==0)
-        echo "<div class='appl_link'><a onclick='getApplication(\"$item[0]\")' class='open_modal_link' ><div class=\"circle\" style=\"background-color:red\"></div>  $item[2] $item[3]</a></div>>";
+        echo "<div class='appl_link'><a onclick='getApplication(\"$item[0]\")' class='open_modal_link' ><div class=\"circle\" style=\"background-color:red\"></div>  $item[2] $item[3]</a></div>";
     else if ($item[1]==1)
         echo "<div class='appl_link'> <a  onclick='getApplication(\"$item[0]\")' class='open_modal_link' ><div class=\"circle\" style=\"background-color:yellow\"></div>  $item[2] $item[3]</a></div>";
     else echo "<div class='appl_link'> <a  onclick='getApplication(\"$item[0]\")' class='open_modal_link' ><div class=\"circle\" style=\"background-color:green\"></div>  $item[2] $item[3]</a></div>";
