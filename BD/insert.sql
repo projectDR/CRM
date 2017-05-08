@@ -30,4 +30,4 @@ insert into application_type (appl_type_name) values ('Проблемы с ин�
 
 insert into application (client_fio, id_application_types, id_position, urgency, description) values ('Белов Дмитрий Павлович', 6, 1, 1, 'Памагити! Кампуктир сламанался!! Ничиго ни работат! Пишу с домофона!');
 
-
+insert into employee (employee_name, employee_type, nickname, password) values ('Петров Петр Петрович', false, 'PPetrov', '1111') --Поздне будет храниться хэшированный пароль,type: false - service desk, true - manager

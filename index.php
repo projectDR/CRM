@@ -95,7 +95,25 @@
                 },
                 error: function()
                 {
+                    alert("don't get application");
+                }
 
+            });
+        }
+
+        function accept_appl(id)
+        {
+            nickname ="PPetrov";
+            $.ajax({
+                type:"POST",
+                url: "accept-application.php",
+                data: {ID: id, NICKNAME: nickname},
+                success: function(a){
+                    alert(a);
+                },
+                error: function()
+                {
+                    alert("don't accept application");
                 }
 
             });

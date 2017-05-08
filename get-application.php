@@ -55,7 +55,7 @@ $html = '<form class = "form-horizontal">
                 </div>
             <div class="form-group">
                 <div class="col-sm-offset-3">
-                    <button class="btn" type="submit">Принять заявку</button>
+                    <button class="btn" type="submit" onclick="accept_appl('.$_POST["ID"].')">Принять заявку</button>
                 </div>
             </div>
             </form> ';
