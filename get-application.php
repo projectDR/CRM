@@ -47,6 +47,18 @@ $html = '<form class = "form-horizontal">
                     <textarea class="form-control" rows="10" id = "description" readonly></textarea>
                 </div>
             </div>
+             <div class="form-group">
+                <label for="status" class="col-sm-3 control-label">Тип заявки</label>
+                        <div class="col-sm-7">
+                            <select class="form-control">
+                               <option value="1">Создана</option>
+                               <option value="2">Назначена</option>
+                               <option value="3">Выполняется</option>
+                               <option value="4">Выполнена</option>
+                               <option value="5">Отменена</option>
+                            </select>
+                        </div>
+            </div>
                 <div class="form-group">
                     <label for="urgency" class="col-sm-3 control-label">Срочность</label>
                     <div class="col-sm-7">

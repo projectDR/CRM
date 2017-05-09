@@ -33,7 +33,7 @@
             $("#log-up-button").on( "click", function() {
                 $("#dialog").html( '<form id="loginForm" name="loginForm" method="post"> <fieldset> ' +
                     '<legend>Форма регистрации</legend>' +
-                    '<!-- ФИО и пароль--> </fieldset> </form>');
+                    '<!-- ФИО, никнэйм, тип аккаунта(исполнитель\менеджер) и пароль--> </fieldset> </form>');
                 $( "#dialog" ).dialog( "open" );
             });
         });
@@ -86,6 +86,7 @@
                     $("#position").val(res.values[3]);
                     $("#brtype").val(res.values[4]);
                     $("#description").val(res.values[5]);
+                    $("#status").val(res.values[6]);
                     if (res.values[0]==0)
                         $("#urgency").css({"background-color": "red"});
                     else if (res.values[0]==1)
@@ -108,8 +109,9 @@
                 type:"POST",
                 url: "accept-application.php",
                 data: {ID: id, NICKNAME: nickname},
-                success: function(a){
-                    alert(a);
+                success: function(){
+                    $("#dialog").dialog("close");
+                    getApplList();
                 },
                 error: function()
                 {
