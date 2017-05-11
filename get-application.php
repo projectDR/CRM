@@ -3,7 +3,7 @@
 require_once("classes/DBWorking_class.php");
 $db = new DBWorking_class("project_bd", "Root123");
 
-$result = $db->query("select urgency,client_fio, department_name, position_name, at.appl_type_name,  a.description
+$result = $db->query("select urgency,client_fio, department_name, position_name, at.appl_type_name,  a.description, a.id_status
                             from application a join application_type at
                             on a.id_application_types = at.id
                             join position p
@@ -50,7 +50,7 @@ $html = '<form class = "form-horizontal">
              <div class="form-group">
                 <label for="status" class="col-sm-3 control-label">Тип заявки</label>
                         <div class="col-sm-7">
-                            <select class="form-control">
+                            <select class="form-control" id="status">
                                <option value="1">Создана</option>
                                <option value="2">Назначена</option>
                                <option value="3">Выполняется</option>
@@ -69,6 +69,10 @@ $html = '<form class = "form-horizontal">
                 <div class="col-sm-offset-3">
                     <button class="btn" type="submit" onclick="accept_appl('.$_POST["ID"].')">Принять заявку</button>
                 </div>
+                <div class="col-sm-offset-3">
+                    <button class="btn" type="submit" onclick="change_appl_status('.$_POST["ID"].')">Изменить статус заявки</button>
+                </div>
+            
             </div>
             </form> ';
 

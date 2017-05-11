@@ -86,7 +86,7 @@
                     $("#position").val(res.values[3]);
                     $("#brtype").val(res.values[4]);
                     $("#description").val(res.values[5]);
-                    $("#status").val(res.values[6]);
+                    $("#status option[value='"+res.values[6]+"'").prop('selected', true);
                     if (res.values[0]==0)
                         $("#urgency").css({"background-color": "red"});
                     else if (res.values[0]==1)
@@ -110,6 +110,24 @@
                 url: "accept-application.php",
                 data: {ID: id, NICKNAME: nickname},
                 success: function(){
+                    $("#dialog").dialog("close");
+                    getApplList();
+                },
+                error: function()
+                {
+                    alert("don't accept application");
+                }
+
+            });
+        }
+
+        function change_appl_status(id) {
+            nickname ="PPetrov";
+            $.ajax({
+                type:"POST",
+                url: "accept-application.php",
+                data: {ID: id, NICKNAME: nickname, status:$("#status").val(), type: true},
+                success: function(val){
                     $("#dialog").dialog("close");
                     getApplList();
                 },
