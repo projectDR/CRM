@@ -1,7 +1,7 @@
 <?php
 require_once("classes/DBWorking_class.php");
 $db = new DBWorking_class("project_bd", "Root123");
-$result = $db->query("select a.id, urgency, department_name, at.appl_type_name,aps.status_name
+$result = $db->select("select a.id, urgency, department_name, at.appl_type_name,aps.status_name
                             from application_status aps join application a 
                             on a.id_status = aps.id
                             join application_type at

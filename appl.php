@@ -19,7 +19,7 @@
                 <option value="-1" selected></option>
                 <?php
                     $db = new DBWorking_class("project_bd", "Root123");
-                    $depArray = $db->query("SELECT department_name, id FROM department");
+                    $depArray = $db->select("SELECT department_name, id FROM department");
 
                     foreach ($depArray as $item)
                     {
@@ -45,7 +45,7 @@
         <div class="col-sm-5">
             <select class="form-control" id = "brtype">
                 <?php
-                $brArray = $db->query("SELECT id, appl_type_name FROM application_type");
+                $brArray = $db->select("SELECT id, appl_type_name FROM application_type");
 
                 foreach ($brArray as $item)
                 {
@@ -81,15 +81,29 @@
 <script>
     $(document).ready(function () {
         $("#send_btn").click(function(){
+
+            var reg = /^[а-яА-Я\s-]{3,}$/;
+            if(!reg.test($("#username").val()))
+            {
+                $("#username").css("background-color", "red");
+                return;
+            }
+
             var query = "INSERT INTO application (client_fio, id_application_types, id_position, urgency,description, id_status) VALUES ('";
             query += $("#username").val() + "', " + $("#brtype").val() + ", "  +
                 $("#position").val() + ", "+ $("#urgency").val() + ", '" + $("#description").val() + "',1)";
             $.ajax({
                 type: 'POST',
                 url: 'my_staff/write_to_base.php',
-                data: {com: query},
+                data: {
+                    name: $("#username").val(),
+                    brtype: $("#brtype").val(),
+                    pos: $("#position").val(),
+                    urgency: $("#urgency").val(),
+                    description: $("#description").val()
+                },
                 success: function (response) {
-                    alert(response);
+                    alert("Данные успешно добавлены \n" + response);
                 },
                 error: function () {
                     alert("Не пошло");

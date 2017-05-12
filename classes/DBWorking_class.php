@@ -17,7 +17,7 @@ class DBWorking_class
         //$this->dbconnection = pg_connect($connectionString);
     }
 
-    public function query($query)
+    public function select($query)
     {
         $arr = array();
         $this->query = $query;
@@ -25,17 +25,12 @@ class DBWorking_class
 
         while ($line = pg_fetch_array($this->result,null, PGSQL_NUM))
         {
-            /*$str = "";
-            foreach($line as $item)
-            {
-                $str = $str.$item;
-            }*/
             array_push($arr,$line);
         }
         return $arr;
     }
 
-    public function insert($query)
+    public function query($query)
     {
         $this->query = $query;
         pg_query($this->dbconnection, $this->query);

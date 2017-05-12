@@ -15,8 +15,9 @@ article{ float: left; width: 70%; margin-left: 5px; padding: 0px 50px 50px 0px;}
 .open_modal_link:hover{text-decoration: none;}
 .appl_link:hover{background-color: #d5d5d5;}
 .appl_status{float:right; }
-.appl_info{color: #1a88d2 }
+.appl_info{color: #1a88d2}
 .appl_status , .appl_info{ display:inline-block}
+
 
 .circle{
     width:10px;
@@ -37,4 +38,3 @@ article{ float: left; width: 70%; margin-left: 5px; padding: 0px 50px 50px 0px;}
     -webkit-border-radius: 90px/45px;
     border-radius: 90px/45px;
 }
-

@@ -6,7 +6,7 @@
 
     if(!empty($_GET['depID']))
     {
-        $values = $db->query('SELECT id, position_name FROM position WHERE id_departments='.$_GET['depID']);
+        $values = $db->select('SELECT id, position_name FROM position WHERE id_departments='.$_GET['depID']);
         foreach ($values as $item)
         {
             $temp = array("id" => $item[0], "name" => $item[1]);

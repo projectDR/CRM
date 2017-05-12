@@ -6,23 +6,22 @@
  * Date: 14.04.17
  * Time: 17:50
  */
-class Application
+class Application_class
 {
-    var $username, $department, $position, $brtype, $urgensy, $description;
+    public  $username, $department, $position, $brtype, $urgency, $description;
 
     function __construct($data)
     {
-        $this->username = isset($data["username"]) ? $data["username"] : "guest";
-        $this->department = isset($data["department"]) ? $data["department"] : "guest";
-        $this->position = isset($data["position"]) ? $data["position"] : "guest";
-        $this->brtype = isset($data["brtype"]) ? $data["brtype"] : null;
-        $this->urgensy = isset($data["urgency"]) ? $data["urgency"] : null;
-        $this->description = isset($data["description"]) ? $data["description"] : null;
+        $this->username = isset($data[0]) ? $data[0] : "guest";
+        $this->brtype = isset($data[1]) ? $data[1] : null;
+        $this->position = isset($data[2]) ? $data[2] : null;
+        $this->urgency = isset($data[3]) ? $data[3] : null;
+        $this->description = isset($data[4]) ? $data[4] : "";
     }
 
     function validate()
     {
-        !empty($this->username) && !empty($this->department) && !empty($this->position) && !empty($this->brtype) &&
-        !empty($this->urgensy) && !empty($this->description);
+        return (!empty($this->username) && !empty($this->department) && !empty($this->position) && !empty($this->brtype) &&
+        !empty($this->urgency));
     }
 }
