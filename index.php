@@ -45,23 +45,35 @@
     <div class="it-asist"></div>
     <section>
         <article>
-            <div class="panel panel-default appl" id="main-content">
-                <?php include('appl.php')?>
-                <div id="dialog">
-
+            <form> <!--Будет выводиться авторизованным пользователям -->
+                <div class='switches'>
+                    Все заявки <input type='radio' name="appls_type" value="all">
+                    Созданные заявки <input type='radio' name="appls_type" value="1">
+                    Назначенные заявки <input type='radio' name="appls_type" value="2">
+                    Выполняемые заявки <input type='radio' name="appls_type" value="3">
+                    Выполненные заявки <input type='radio' name="appls_type" value="4">
+                    Отмененные заявки <input type='radio' name="appls_type" value="5">
                 </div>
+            </form>
+            <div class="panel panel-default appl" id="main-content">
+                <?php include('appl.php')?> <!--Будет выводиться не авторизованным пользователям -->
             </div>
         </article>
     </section>
-
+    <div id="dialog">
+    </div>
     <script>
 
+        $("input[name='appls_type']").change(function () {
+              getApplList($("input[name='appls_type']:checked").val());
+        });
 
-        function getApplList()
+        function getApplList(checkedType)
         {
             $.ajax({
                 type:"POST",
                 url: "applications_list.php",
+                data:{type:checkedType},
                 success: function(applList){
                     $("#main-content").html(applList);
                 },
