@@ -11,34 +11,8 @@
     <script src="js/copyright.js"></script>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <script>
-        $( function() {
-            $( "#dialog" ).dialog({
-                autoOpen: false,
-                width: "50%",
-                height:"auto",
-                show: {
-                },
-                hide: {
-                }
-            });
-
-            $("#log-in-button").on( "click", function() {
-                $("#dialog").html( '<form id="loginForm" name="loginForm" method="post"> <fieldset> ' +
-                    '<legend>Введите данные для входа</legend>' +
-                    '<!-- Тут будут поля для ввода логина и пароля--> </fieldset> </form>');
-            $( "#dialog" ).dialog( "open" );
-            });
-
-            $("#log-up-button").on( "click", function() {
-                $("#dialog").html( '<form id="loginForm" name="loginForm" method="post"> <fieldset> ' +
-                    '<legend>Форма регистрации</legend>' +
-                    '<!-- ФИО, никнэйм, тип аккаунта(исполнитель\менеджер) и пароль--> </fieldset> </form>');
-                $( "#dialog" ).dialog( "open" );
-            });
-        });
-    </script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="js/other_scripts.js"></script>
 </head>
     <body>
     <?php include('header.php')?>
@@ -62,96 +36,7 @@
     </section>
     <div id="dialog">
     </div>
-    <script>
-
-        $("input[name='appls_type']").change(function () {
-              getApplList($("input[name='appls_type']:checked").val());
-        });
-
-        function getApplList(checkedType)
-        {
-            $.ajax({
-                type:"POST",
-                url: "applications_list.php",
-                data:{type:checkedType},
-                success: function(applList){
-                    $("#main-content").html(applList);
-                },
-                error: function()
-                {
-                  alert("don't get application list");
-                }
-            });
-        }
-
-        function getApplication(id){
-
-            $.ajax({
-                type:"POST",
-                url: "get-application.php",
-                data: {ID: id},
-                success: function(appl){
-                    var res = jQuery.parseJSON(appl);
-                    $("#dialog").html(res.appl_form);
-                    $( "#dialog" ).dialog( "open" );
-                    $("#username").val(res.values[1]);
-                    $("#department").val(res.values[2]);
-                    $("#position").val(res.values[3]);
-                    $("#brtype").val(res.values[4]);
-                    $("#description").val(res.values[5]);
-                    $("#status option[value='"+res.values[6]+"'").prop('selected', true);
-                    if (res.values[0]==0)
-                        $("#urgency").css({"background-color": "red"});
-                    else if (res.values[0]==1)
-                        $("#urgency").css({"background-color": "yellow"});
-                    else
-                        $("#urgency").css({"background-color": "green"});
-                },
-                error: function()
-                {
-                    alert("don't get application");
-                }
-
-            });
-        }
-
-        function accept_appl(id)
-        {
-            nickname ="PPetrov";
-            $.ajax({
-                type:"POST",
-                url: "accept-application.php",
-                data: {ID: id, NICKNAME: nickname},
-                success: function(){
-                    $("#dialog").dialog("close");
-                    getApplList();
-                },
-                error: function()
-                {
-                    alert("don't accept application");
-                }
-
-            });
-        }
-
-        function change_appl_status(id) {
-            nickname ="PPetrov";
-            $.ajax({
-                type:"POST",
-                url: "accept-application.php",
-                data: {ID: id, NICKNAME: nickname, status:$("#status").val(), type: true},
-                success: function(val){
-                    $("#dialog").dialog("close");
-                    getApplList();
-                },
-                error: function()
-                {
-                    alert("don't accept application");
-                }
-
-            });
-        }
-    </script>
+    <script src="js/ajax.js"></script>
     </body>
 <?php
 

@@ -1,5 +1,5 @@
 <?php
-require_once ("classes/DBWorking_class.php");
+require_once ("../classes/DBWorking_class.php");
 
 if(!empty($_POST["ID"]))
 {
