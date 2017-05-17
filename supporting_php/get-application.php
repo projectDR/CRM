@@ -10,41 +10,39 @@ $result = $db->select("select urgency,client_fio, department_name, position_name
                             on a.id_position = p.id
                             join department d
                             on p.id_departments = d.id
-                            where a.id = ".$_POST['ID']
+                            where a.id = 1"
                     );
-
-
 
 $html = '<form class = "form-horizontal">
                 <h1 class="h1">Форма заявки</h1>
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">Фамилия Имя Отчество</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" id = "username" readonly>
+                        <input type="text" class="form-control" id = "username" readonly value="'.$result[0][1].'">
                     </div>
                 </div>
             <div class="form-group">
                 <label for="department" class="col-sm-3 control-label">Отдел</label>
                      <div class="col-sm-7">
-                            <input type="text" class="form-control" id = "department" readonly>
+                            <input type="text" class="form-control" id = "department" readonly value="'.$result[0][2].'">
                      </div>
             </div>
             <div class="form-group">
                 <label for="position" class="col-sm-3 control-label">Должность</label>
                       <div class="col-sm-7">
-                            <input type="text" class="form-control"  id = "position" readonly>
+                            <input type="text" class="form-control"  id = "position" readonly value="'.$result[0][3].'">
                       </div>
             </div>
             <div class="form-group">
                 <label for="brtype" class="col-sm-3 control-label">Тип заявки</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control"  id = "brtype" readonly>
+                            <input type="text" class="form-control"  id = "brtype" readonly value="'.$result[0][4].'">
                         </div>
             </div>
             <div class="form-group">
                 <label for="description" class="col-sm-3 control-label">Описание проблемы</label>
                 <div class="col-sm-7">
-                    <textarea class="form-control" rows="10" id = "description" readonly></textarea>
+                    <textarea class="form-control" rows="10" id = "description" readonly >'.$result[0][5].'</textarea>
                 </div>
             </div>
              <div class="form-group">
