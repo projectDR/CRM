@@ -64,12 +64,14 @@ $(document).ready(function () {
 });
 
 
-$("input[name='appls_type']").change(function () {
-    getApplList($("input[name='appls_type']:checked").val());
+$("select[name='appls_type']").change(function () {
+    getApplList($("select[name='appls_type'] option:checked").val());
 });
 
 function getApplList(checkedType)
 {
+   // var redirect = '/application_list';
+   // history.pushState('', '', redirect);
     $.ajax({
         type:"POST",
         url: "../supporting_php/applications_list.php",
@@ -94,11 +96,6 @@ function getApplication(id){
             var res = jQuery.parseJSON(appl);
             $("#dialog").html(res.appl_form);
             $( "#dialog" ).dialog( "open" );
-            $("#username").val(res.values[1]);
-            $("#department").val(res.values[2]);
-            $("#position").val(res.values[3]);
-            $("#brtype").val(res.values[4]);
-            $("#description").val(res.values[5]);
             $("#status option[value='"+res.values[6]+"'").prop('selected', true);
             if (res.values[0]==0)
                 $("#urgency").css({"background-color": "red"});
