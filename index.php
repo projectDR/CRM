@@ -21,12 +21,14 @@
         <article>
             <form> <!--Будет выводиться авторизованным пользователям -->
                 <div class='switches'>
-                    Все заявки <input type='radio' name="appls_type" value="all">
-                    Созданные заявки <input type='radio' name="appls_type" value="1">
-                    Назначенные заявки <input type='radio' name="appls_type" value="2">
-                    Выполняемые заявки <input type='radio' name="appls_type" value="3">
-                    Выполненные заявки <input type='radio' name="appls_type" value="4">
-                    Отмененные заявки <input type='radio' name="appls_type" value="5">
+                    <select name="appls_type">
+                        <option value="all" selected="selected">Все заявки </option>
+                        <option value="1"> Созданные заявки </option>
+                        <option value="2"> Назначенные заявки </option>
+                        <option value="3"> Выполняемые заявки </option>
+                        <option value="4"> Выполненные заявки </option>
+                        <option value="5"> Отмененные заявки </option>
+                    </select>
                 </div>
             </form>
             <div class="panel panel-default appl" id="main-content">
@@ -37,6 +39,9 @@
     <div id="dialog">
     </div>
     <script src="js/ajax.js"></script>
+    <script>
+       // $("select[name='appls_type']").change();
+    </script>
     </body>
 <?php
 
