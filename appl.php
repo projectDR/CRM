@@ -19,7 +19,7 @@
                 <option value="-1" selected></option>
                 <?php
                     $db = new DBWorking_class("project_bd", "Root123");
-                    $depArray = $db->select("SELECT department_name, id FROM department");
+                    $depArray = $db->select("SELECT department_name, id FROM department", Array());
 
                     foreach ($depArray as $item)
                     {
@@ -45,7 +45,7 @@
         <div class="col-sm-5">
             <select class="form-control" id = "brtype">
                 <?php
-                $brArray = $db->select("SELECT id, appl_type_name FROM application_type");
+                $brArray = $db->select("SELECT id, appl_type_name FROM application_type", Array());
 
                 foreach ($brArray as $item)
                 {

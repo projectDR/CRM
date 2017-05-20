@@ -17,7 +17,7 @@ class DBWorking_class
         //$this->dbconnection = pg_connect($connectionString);
     }
 
-    public function select($query)
+    /*public function select($query)
     {
         $arr = array();
         $this->query = $query;
@@ -28,12 +28,31 @@ class DBWorking_class
             array_push($arr,$line);
         }
         return $arr;
+    }*/
+
+    public function select($query, $params)
+    {
+        $arr = array();
+        $this->query = $query;
+        $this->result = pg_query_params($this->dbconnection, $query, $params);
+
+        while ($line = pg_fetch_array($this->result,null, PGSQL_NUM))
+        {
+            array_push($arr,$line);
+        }
+        return $arr;
     }
 
-    public function query($query)
+    /*public function query($query)
     {
         $this->query = $query;
         pg_query($this->dbconnection, $this->query);
+    }*/
+
+    public function query($query, $params)
+    {
+        $this->query = $query;
+        pg_query_params($this->dbconnection, $this->query, $params);
     }
 
     public static function test_msg()
