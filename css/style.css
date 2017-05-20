@@ -39,3 +39,14 @@ article{ float: left; width: 70%; margin-left: 5px; padding: 0px 50px 50px 0px;}
     -webkit-border-radius: 90px/45px;
     border-radius: 90px/45px;
 }
+
+.employees{
+    margin-top:100px;
+}
+
+td, th {padding:5px; border: 1px solid black;}
+
+/* .tab_head{
+    transform:translateY(-70px) rotate(-60deg);
+}
+*/
