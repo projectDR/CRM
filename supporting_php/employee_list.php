@@ -10,10 +10,10 @@ $result = $db->select("select a.id_application_types, at.appl_type_name, a.id_em
                             join employee e
                             on a.id_employees = e.id
                             where a.id_status = 4
-                            group by  e.employee_name,at.appl_type_name, a.id_application_types, a.id_employees");
+                            group by  e.employee_name,at.appl_type_name, a.id_application_types, a.id_employees", Array());
 
-$appl_type = $db->select("select * from application_type a");
-$employee = $db->select("select * from employee e");
+$appl_type = $db->select("select * from application_type a", Array());
+$employee = $db->select("select * from employee e", Array());
 
 
 $table = "<div class='employees'><table>";

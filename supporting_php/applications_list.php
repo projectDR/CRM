@@ -11,7 +11,7 @@ if($_POST["type"]=="all") {
                             on a.id_position = p.id
                             join department d 
                             on p.id_departments = d.id
-");
+", Array());
 }else
 {
     $result = $db->select("select a.id, urgency, department_name, at.appl_type_name,aps.status_name
@@ -23,7 +23,7 @@ if($_POST["type"]=="all") {
                             on a.id_position = p.id
                             join department d 
                             on p.id_departments = d.id
-                            where a.id_status=".$_POST["type"]);
+                            where a.id_status=$1", Array($_POST["type"]));
 }
 foreach ($result as $item)
 {

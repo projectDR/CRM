@@ -5,6 +5,7 @@
             <!--Эти ссылки будут выводиться для авторизованного исполнителя -->
             <li><a href="#">Профиль</a></li>
             <li><a href="#application_list" onclick="getApplList('all')">Список заявок</a></li>
+            <li><a href="#employees_list" onclick="get_employees_list()">Список исполнителей</a></li>
         <button type="button" class="btn btn-default navbar-btn"
                 id="log-in-button" onclick="get_reg_auth_form('login')">Войти</button>
         <button type="button" class="btn btn-default navbar-btn"

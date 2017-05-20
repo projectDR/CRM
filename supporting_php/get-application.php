@@ -10,7 +10,7 @@ $result = $db->select("select urgency,client_fio, department_name, position_name
                             on a.id_position = p.id
                             join department d
                             on p.id_departments = d.id
-                            where a.id = ".$_POST["ID"]
+                            where a.id = $1", Array($_POST["ID"])
                     );
 
 $html = '<form class = "form-horizontal">
