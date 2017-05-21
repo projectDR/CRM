@@ -64,10 +64,6 @@ $(document).ready(function () {
 });
 
 
-$("select[name='appls_type']").change(function () {
-    getApplList($("select[name='appls_type'] option:checked").val());
-});
-
 function getApplList(checkedType)
 {
    // var redirect = '/application_list';
@@ -160,13 +156,38 @@ function get_employees_list()
             $("#main-content").html(res.employee_table);
              for (var i=0; i<res.values.length; i++)
             {
-
                 $("#"+res.values[i][0]+res.values[i][2]+"").text(res.values[i][4]);
             }
         },
         error: function()
         {
             alert("don't get employee_list");
+        }
+
+    });
+}
+
+function switchOnChange(){
+    window.location.hash = "#application_list";
+    getApplList($("select[name='appls_type'] option:checked").val());
+}
+
+function getSwitches() {
+    $.ajax({
+        type:"POST",
+        url: "../supporting_php/get_switches.php",
+        success: function(val){
+            var res = jQuery.parseJSON(val);
+            var s = $("<select name='appls_type' onchange='switchOnChange()'/>");
+            $("<option />", {value: 'all', text: 'все заявки', selected:'selected'}).appendTo(s);
+            for(var i=0; i< res.length; i++) {
+                $("<option />", {value: res[i][0], text: res[i][1]}).appendTo(s);
+            }
+            s.appendTo(".switches");
+        },
+        error: function()
+        {
+            alert("don't get swithes");
         }
 
     });

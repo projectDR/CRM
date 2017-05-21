@@ -14,36 +14,45 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="js/other_scripts.js"></script>
 </head>
+    <?php session_start(); $_SESSION["type"]="true"; ?>
     <body>
-    <?php include('header.php')?>
+    <?php include('header.php');?>
     <div class="it-asist"></div>
     <section>
         <article>
             <form> <!--Будет выводиться авторизованным пользователям -->
                 <div class='switches'>
-                    <select name="appls_type">
-                        <option value="all" selected="selected">Все заявки </option>
-                        <option value="1"> Созданные заявки </option>
-                        <option value="2"> Назначенные заявки </option>
-                        <option value="3"> Выполняемые заявки </option>
-                        <option value="4"> Выполненные заявки </option>
-                        <option value="5"> Отмененные заявки </option>
-                    </select>
+
                 </div>
             </form>
             <div class="panel panel-default appl" id="main-content">
-                <?php include('appl.php')?> <!--Будет выводиться не авторизованным пользователям -->
+                <?php
+                if (!isset($_SESSION["type"])) include('appl.php'); ?> <!--Будет выводиться не авторизованным пользователям -->
             </div>
         </article>
     </section>
     <div id="dialog">
     </div>
     <script src="js/ajax.js"></script>
+    <?php if(isset($_SESSION["type"])) echo '
     <script>
-       // $("select[name='appls_type']").change();
-    </script>
+        getSwitches();
+        if(window.location.hash == "#application_list")
+            {
+               //switchOnChange();
+               getApplList("all");
+            }
+        else if(window.location.hash == "#employees_list")
+            {
+            get_employees_list();
+            }
+        
+    </script> ';
+    ?>  <!-- script>
+        alert(22);
+        $("select[name='appls_type']").change(function () {
+            getApplList($("select[name='appls_type'] option:checked").val());
+        });
+    </script -->
     </body>
-<?php
-
-?>
 </html>
