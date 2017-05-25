@@ -21,7 +21,9 @@ class Application_class
 
     function validate()
     {
+        $rus_pattern = "^[А-я\s]{3,}$";
+
         return (!empty($this->username) && !empty($this->department) && !empty($this->position) && !empty($this->brtype) &&
-        !empty($this->urgency));
+        !empty($this->urgency) && mb_ereg_match($rus_pattern, $this->username));
     }
 }

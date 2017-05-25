@@ -34,9 +34,9 @@ class Authentication_class
         $this->db = new DBWorking_class("project_bd", "Root123");
         $result = $this->db->select("SELECT * FROM employee WHERE nickname=$1", Array($username));
         if(password_verify($password,$result[0][4]))
-            return "true";
+            return $result;
         else
-            return "false";
+            return null;
     }
 
     public function verify_filling($username, $type, $login, $password)
@@ -45,6 +45,14 @@ class Authentication_class
         $this->password = $password;
         $this->login = $login;
         $this->type = $type;
-        return !empty($this->username) && !empty($this->password) && !empty($this->login);
+
+        $pas_pattern = "^[A-z0-9.,!&$@\/*|+-]{3,}$"; //for password
+        $lat_pattern = "^[A-z0-9]{3,}$"; //for login
+        $rus_pattern = "^[А-я\s]{3,}$"; //rus names
+
+        return !empty($this->username) && !empty($this->password) && !empty($this->login) &&
+            mb_ereg_match($rus_pattern, $this->username) &&
+            mb_ereg_match($lat_pattern, $this->login) &&
+            mb_ereg_match($pas_pattern, $this->password);
     }
 }

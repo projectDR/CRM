@@ -2,6 +2,10 @@
 
     require_once ("../classes/DBWorking_class.php");
     require_once ("../classes/application_class.php");
+
+    $name = htmlspecialchars($_POST["name"]);
+    $description = htmlspecialchars($_POST["description"]);
+
     $db = new DBWorking_class("project_bd", "Root123");
     $apl = new Application_class(array($_POST["name"], $_POST["brtype"], $_POST["pos"], $_POST["urgency"], $_POST["description"]));
 

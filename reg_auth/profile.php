@@ -1,40 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 19.05.17
- * Time: 17:23
- */
-if($_POST["type"] == "login")
-{
-    echo '<form class="form-horizontal" id="loginForm" name="loginForm" method="post"> <fieldset> 
-            <legend>Введите данные для входа</legend>
-        <div class="form-group">
-            <label for="login" class="col-sm-3 control-label">Логин</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" id = "login" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password" class="col-sm-3 control-label">Пароль</label>
-            <div class="col-sm-5">
-                <input type="password" class="form-control" id = "password" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2">
-                <button class="btn" type="button" id="send_btn1" onclick="verify()">Отправить</button>
-            </div>
-        </div> </fieldset> </form>';
-}
-else
-{
-        echo '<form class="form-horizontal" id="loginForm" name="loginForm" method="post"> <fieldset>
-        <legend>Форма регистрации</legend>
+session_start();
+$login = $_SESSION["login"];
+echo '        <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../js/copyright.js"></script>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <script src="../js/other_scripts.js"></script>
+    
+        <form class="form-horizontal" id="loginForm" name="loginForm" method="post"> <fieldset>
+        <legend>Профиль пользователя '.$login.'</legend>
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">ФИО</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id = "fio" required>
+                <input type="text" class="form-control" id = "fio" value="" required>
             </div>
         </div>
         <div class="form-group">
@@ -65,12 +48,9 @@ else
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2">
+            <div class="col-sm-6 control-label">
                 <button class="btn" type="button" id="send_btn1" onclick="add_user()">Отправить</button>
             </div>
         </div>
         <!-- ФИО, никнэйм, тип аккаунта(исполнитель\менеджер) и пароль--> </fieldset> </form>';
-}
-
-echo '';
 ?>
