@@ -19,7 +19,7 @@
                 }
                 else {
                     echo '<button type="button" class="btn btn-default navbar-btn"
-                                    id="log-in-button" onclick="get_reg_auth_form(\'login\')">Выйти</button>
+                                    id="log-in-button" onclick="log_out()">Выйти</button>
                           <button type="button" class="btn btn-default navbar-btn"
                                     id="log-up-button " onclick="get_reg_auth_form(\'create\')">'.$login.'</button>';
                 }

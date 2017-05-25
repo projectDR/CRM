@@ -50,11 +50,16 @@ function add_user() {
             passsword: $("#password").val()
         },
         success: function (response) {
+            if(response == "fail")
+            {
+                alert("Логин уже существует");
+                return;
+            }
             alert("Данные успешно добавлены \n" + response);
             $( "#dialog" ).dialog( "close" );
         },
         error: function () {
-            alert("Не пошло");
+            alert("Не пошло добавление");
         }
     });
 }
@@ -68,11 +73,17 @@ function verify() {
             password: $("#password").val()
         },
         success: function (response) {
-            alert("Существование юзера: " + response);
+            //alert("Существование юзера: " + response);
             $( "#dialog" ).dialog( "close" );
+            location.reload();
         },
         error: function () {
             alert("Не пошло");
         }
     });
+}
+
+function log_out() {
+    url = "../reg_auth/log-out.php";
+    $(location).attr('href', url);
 }
