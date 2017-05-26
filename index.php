@@ -17,7 +17,7 @@
     <body>
     <?php include('header.php'); ?>
     <div class="it-asist"></div>
-    <section> <?php echo $_SESSION["login"] ?>
+    <section>
         <article>
             <form> <!--Будет выводиться авторизованным пользователям -->
                 <div class='switches'>

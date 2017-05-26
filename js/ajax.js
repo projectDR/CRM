@@ -108,12 +108,15 @@ function getApplication(id){
     });
 }
 
-function accept_appl(id)
+function accept_appl(id, nick)
 {
+    if(nick =="")
+    nick = $("#empployee option:checked").val();
+
     $.ajax({
         type:"POST",
         url: "../supporting_php/accept-application.php",
-        data: {ID: id},
+        data: {ID: id, NICKNAME: nick},
         success: function(){
             $("#dialog").dialog("close");
             getApplList($("select[name='appls_type'] option:checked").val());

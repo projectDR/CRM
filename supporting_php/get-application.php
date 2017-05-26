@@ -1,6 +1,7 @@
 <?php
 
 require_once("../classes/DBWorking_class.php");
+session_start();
 $db = new DBWorking_class("project_bd", "Root123");
 
 $result = $db->select("select urgency,client_fio, department_name, position_name, at.appl_type_name,  a.description, a.id_status
@@ -62,10 +63,39 @@ $html = '<form class = "form-horizontal">
                     <div class="col-sm-7">
                         <div class="oval" id="urgency"></div>
                     </div>
-                </div>
+                </div>';
+    if ($_SESSION["type"]=="t")
+    {
+        $html.=    '<div class="form-group">
+                <label for="employees" class="col-sm-3 control-label">Исполнитель</label>
+                        <div class="col-sm-7">
+                            <select class="form-control" id="employees">';
+
+        $employee = $db->select("select * from employee e where e.employee_type=false", Array());
+        foreach ($employee  as $item)
+        {
+            $html.='<option value="'.$item[3].'">'.$item[1].'</option>';
+        }
+
+        $html.=                    '</select>
+                        </div>
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-3">
-                    <button class="btn" type="submit" onclick="accept_appl('.$_POST["ID"].')">Принять заявку</button>
+                    <button class="btn" type="submit" onclick="accept_appl('.$_POST["ID"].')">Назначить заявку</button>
+                </div>
+                <div class="col-sm-offset-3">
+                    <button class="btn" type="submit" onclick="change_appl_status(' .$_POST["ID"]. ')">Изменить статус заявки</button>
+                </div>
+            
+            </div>
+            </form> ';
+    }
+    else {
+
+            $html .= '<div class="form-group">
+                <div class="col-sm-offset-3">
+                    <button class="btn" type="submit" onclick="accept_appl('.$_POST["ID"].','.$_SESSION["login"].')">Принять заявку</button>
                 </div>
                 <div class="col-sm-offset-3">
                     <button class="btn" type="submit" onclick="change_appl_status('.$_POST["ID"].')">Изменить статус заявки</button>
@@ -73,6 +103,7 @@ $html = '<form class = "form-horizontal">
             
             </div>
             </form> ';
+        }
 
 
 echo json_encode(array("values"=>$result[0],"appl_form"=>$html),JSON_UNESCAPED_UNICODE);
