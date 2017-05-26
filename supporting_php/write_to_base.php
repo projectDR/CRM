@@ -12,9 +12,9 @@
     if($apl->validate())
     {
         $my_query = "INSERT INTO application (client_fio, id_application_types, id_position, urgency,description, id_status) 
-VALUES ('$apl->username', $apl->brtype, $apl->position, $apl->urgency, '$apl->description', 1)";
+VALUES ($1, $2, $3, $4, $5, 1)";
 
-        $db->query($my_query);
+        $db->query($my_query,Array($apl->username, $apl->brtype,  $apl->position, $apl->urgency, $apl->description));
         echo $my_query;
     }
     else
