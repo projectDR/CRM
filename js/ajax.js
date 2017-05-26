@@ -68,6 +68,7 @@ function getApplList(checkedType)
 {
    // var redirect = '/application_list';
    // history.pushState('', '', redirect);
+
     $.ajax({
         type:"POST",
         url: "../supporting_php/applications_list.php",
@@ -110,8 +111,9 @@ function getApplication(id){
 
 function accept_appl(id, nick)
 {
-    if(nick =="")
-    nick = $("#empployee option:checked").val();
+    if(nick ==undefined) {
+        nick =$("#employees").val();
+    }
 
     $.ajax({
         type:"POST",
@@ -129,28 +131,31 @@ function accept_appl(id, nick)
     });
 }
 
-function change_appl_status(id) {
-    nickname ="PPetrov";
-    $.ajax({
-        type:"POST",
-        url: "../supporting_php/accept-application.php",
-        data: {ID: id, NICKNAME: nickname, status:$("#status").val(), type: true},
-        success: function(val){
-            $("#dialog").dialog("close");
-           getApplList($("select[name='appls_type'] option:checked").val());
-           //location.reload();
-        },
-        error: function()
-        {
-            alert("don't accept application");
-        }
+function change_appl_status(id, nick) {
 
-    });
+    if(nick ==undefined) {
+       nick =$("#employees").val();
+    }
+        $.ajax({
+            type: "POST",
+            url: "../supporting_php/accept-application.php",
+            data: {ID: id, NICKNAME: nick, status: $("#status").val(), type: true},
+            success: function (val) {
+                $("#dialog").dialog("close");
+                getApplList($("select[name='appls_type'] option:checked").val());
+                //location.reload();
+            },
+            error: function () {
+                alert("don't accept application");
+            }
+
+        });
 }
 
 
 function get_employees_list()
 {
+
     $.ajax({
         type:"POST",
         url: "../supporting_php/employee_list.php",

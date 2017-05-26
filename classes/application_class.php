@@ -1,14 +1,7 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 14.04.17
- * Time: 17:50
- */
 class Application_class
 {
-    public  $username, $department, $position, $brtype, $urgency, $description;
+    public $username, $department, $position, $brtype, $urgency, $description;
 
     function __construct($data)
     {
@@ -23,7 +16,6 @@ class Application_class
     {
         $rus_pattern = "^[А-я\s]{3,}$";
 
-        return (!empty($this->username) && !empty($this->department) && !empty($this->position) && !empty($this->brtype) &&
-        !empty($this->urgency) && mb_ereg_match($rus_pattern, $this->username));
+        return !empty($this->username) && !empty($this->position) && !empty($this->brtype) && mb_ereg_match($rus_pattern, $this->username);
     }
 }
