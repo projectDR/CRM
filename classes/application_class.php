@@ -23,7 +23,7 @@ class Application_class
     {
         $rus_pattern = "^[А-я\s]{3,}$";
 
-        return (!empty($this->username) && !empty($this->department) && !empty($this->position) && !empty($this->brtype) &&
-        !empty($this->urgency) && mb_ereg_match($rus_pattern, $this->username));
+        return !empty($this->username)  && !empty($this->position) && !empty($this->brtype) &&
+        !empty($this->urgency) && mb_ereg_match($rus_pattern, $this->username);
     }
 }
