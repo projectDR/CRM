@@ -110,14 +110,13 @@ function getApplication(id){
 
 function accept_appl(id)
 {
-    nickname ="PPetrov";
     $.ajax({
         type:"POST",
         url: "../supporting_php/accept-application.php",
-        data: {ID: id, NICKNAME: nickname},
+        data: {ID: id},
         success: function(){
             $("#dialog").dialog("close");
-            getApplList($("input[name='appls_type']:checked"));
+            getApplList($("select[name='appls_type'] option:checked").val());
         },
         error: function()
         {
@@ -135,7 +134,8 @@ function change_appl_status(id) {
         data: {ID: id, NICKNAME: nickname, status:$("#status").val(), type: true},
         success: function(val){
             $("#dialog").dialog("close");
-            getApplList();
+           getApplList($("select[name='appls_type'] option:checked").val());
+           //location.reload();
         },
         error: function()
         {

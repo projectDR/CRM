@@ -1,5 +1,6 @@
 <?php
 require_once ("../classes/DBWorking_class.php");
+session_start();
 
 if(!empty($_POST["ID"]))
 {
@@ -8,10 +9,10 @@ if(!empty($_POST["ID"]))
     {
         $db->query( 'update application set id_employees= 
 (select e.id from employee e where nickname =$1), id_status = $2 where application.id = $3',
-            Array($_POST["NICKNAME"], $_POST["status"], $_POST["ID"]));
+            Array($_SESSION["login"], $_POST["status"], $_POST["ID"]));
     }
     else $db->query( 'update application set id_employees= 
 (select e.id from employee e where nickname =$1), id_status = 3 where application.id =$2',
-        Array($_POST["NICKNAME"], $_POST["ID"]));
+        Array($_SESSION["login"], $_POST["ID"]));
 }
 ?>

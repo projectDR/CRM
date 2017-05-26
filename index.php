@@ -14,11 +14,10 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="js/other_scripts.js"></script>
 </head>
-    <?php session_start(); $_SESSION["type"]="true"; ?>
     <body>
-    <?php include('header.php');?>
+    <?php include('header.php'); ?>
     <div class="it-asist"></div>
-    <section>
+    <section> <?php echo $_SESSION["login"] ?>
         <article>
             <form> <!--Будет выводиться авторизованным пользователям -->
                 <div class='switches'>
@@ -27,7 +26,7 @@
             </form>
             <div class="panel panel-default appl" id="main-content">
                 <?php
-                if (!isset($_SESSION["type"])) include('appl.php'); ?> <!--Будет выводиться не авторизованным пользователям -->
+                if (!isset($_SESSION["type"])) include('appl.php');?> <!--Будет выводиться не авторизованным пользователям -->
             </div>
         </article>
     </section>

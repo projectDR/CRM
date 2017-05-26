@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
 
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/copyright.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="js/other_scripts.js"></script>
 </head>
 
 <body>
-<form method="post">
-    <input type="text" placeholder="text here" name="text">
-    <input type="text" placeholder="repeat" name="text1">
-    <button type="submit">Button</button>
+<?php include('header.php')?>
+<form class = "form-horizontal">
+    <div class="form-group">
+        <label for="username" class="col-sm-3 control-label">Логин</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id = "username" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-3 control-label">Пароль</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id = "password" required>
+        </div>
+    </div>
 </form>
 </body>
+
 <?php
 
 /*$dbconnection = pg_connect("host=localhost port=5432 dbname=project_bd user=postgres password=Root123")
@@ -90,33 +113,12 @@ echo " array: ".$myarr[0].$myarr[1].$myarr[2]." query: ".$temp->query;*/
 $hash = password_hash($pass,PASSWORD_DEFAULT);
 $ver = password_verify($pass, $hash);
 echo "pass: ".$pass." hash: ".$hash." ver: ".$ver;*/
-if(isset($_POST["text"]))
-{
-    $text = $_POST["text"];
-    $text1 = $_POST["text1"];
-    echo "field1: ".$text." field2: ".$text1." |||| ";
-    if($text == $text1)
-        echo "match true ";
-    else
-        echo "match false ";
 
-    //here must be some templates
-    //1 - to check is field's text in latin symbols
-    //2 - is field filled with cyrillyc symbols
-    //3 - is field matches password template: latin sym, numbers, spec sym
-    $pas_pattern = "^[A-z0-9.,!&$@\/*|+-]{3,}$"; //for password
-    $lat_pattern = "^[A-z0-9]{3,}$"; //for login
-    $rus_pattern = "^[А-я\s]{3,}$"; //rus names
-    $pattern = $rus_pattern;
-    echo " || pattern: ".$pattern;
-    if(mb_ereg_match($pattern,$text))
-        echo " pattern match: true || ";
-    else
-        echo " pattern match: false || ";
+require_once ("../reg_auth/Authentication_class.php");
 
-    echo " after htmlspecialchars: ".htmlspecialchars($text)." || ";
-}
-
+$au = new Authentication_class();
+$result = $au->verify("name", "1111");
+echo " ver: ".$result;
 
 ?>
 </html>

@@ -14,9 +14,10 @@ article{ float: left; width: 70%; margin-left: 5px; padding: 0px 50px 50px 0px;}
 .appl_link{ display: block; font-size:16px;}
 .open_modal_link:hover{text-decoration: none;}
 .appl_link:hover{background-color: #d5d5d5;}
-.appl_status{float:right; }
-.appl_info{color: #1a88d2}
-.appl_status , .appl_info{ display:inline-block}
+.appl_status , .appl_employee{float:right; }
+.appl_info{color: #1a88d2;}
+.appl_status , .appl_info, .appl_employee{ display:inline-block}
+.appl_status{ width:100px; margin-left: 20px;}
 
 .switches{padding:10px}
 .switches input{margin-right:10px;}
