@@ -2,7 +2,7 @@
 require_once("../classes/DBWorking_class.php");
 $db = new DBWorking_class("project_bd", "Root123");
 if($_POST["type"]=="all") {
-    $result = $db->select("select a.id, urgency, department_name, at.appl_type_name,aps.status_name
+    $result = $db->select("select a.id, urgency, department_name, at.appl_type_name,aps.status_name, e.employee_name
                             from application_status aps join application a 
                             on a.id_status = aps.id
                             join application_type at
@@ -11,10 +11,12 @@ if($_POST["type"]=="all") {
                             on a.id_position = p.id
                             join department d 
                             on p.id_departments = d.id
+                            join employee e
+                            on a.id_employees = e.id
 ", Array());
 }else
 {
-    $result = $db->select("select a.id, urgency, department_name, at.appl_type_name,aps.status_name
+    $result = $db->select("select a.id, urgency, department_name, at.appl_type_name,aps.status_name, e.employee_name
                             from application_status aps join application a 
                             on a.id_status = aps.id
                             join application_type at
@@ -23,6 +25,8 @@ if($_POST["type"]=="all") {
                             on a.id_position = p.id
                             join department d 
                             on p.id_departments = d.id
+                            join employee e
+                            on a.id_employees = e.id
                             where a.id_status=$1", Array($_POST["type"]));
 }
 foreach ($result as $item)
@@ -46,6 +50,7 @@ foreach ($result as $item)
                         <div class=\"circle\" style=\"background-color:green\"></div>  $item[2] $item[3]
                    </div> 
                    <div class='appl_status'>$item[4]</div>
+                   <div></div>
                </div>";
 }
 ?>

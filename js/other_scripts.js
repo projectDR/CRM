@@ -74,7 +74,16 @@ function verify() {
         },
         success: function (response) {
             //alert("Существование юзера: " + response);
-            $( "#dialog" ).dialog( "close" );
+           $( "#dialog" ).dialog( "close" );
+            var res = jQuery.parseJSON(response);
+            if(res[0][2]=="f")
+            {
+                window.location.hash = "#application_list";
+            }
+            else if (res[0][2]=="t")
+            {
+                window.location.hash = "#employees_list";
+            }
             location.reload();
         },
         error: function () {

@@ -20,5 +20,5 @@ if($result !== null)
 }
 else
     echo "Верификация пошла не так";
-echo $result;
+echo json_encode($result,JSON_UNESCAPED_UNICODE);
 ?>

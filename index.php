@@ -14,7 +14,6 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="js/other_scripts.js"></script>
 </head>
-    <?php session_start(); $_SESSION["type"]="true"; ?>
     <body>
     <?php include('header.php');?>
     <div class="it-asist"></div>
