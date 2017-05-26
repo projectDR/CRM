@@ -129,12 +129,17 @@ function accept_appl(id, nick)
     });
 }
 
-function change_appl_status(id) {
-    nickname ="PPetrov";
+function change_appl_status(id, nick) {
+
+    if(nick =="") {
+        nick = $("#employees option:checked").val();
+    alert($("#employees option:checked").val());
+    }
+    alert(nick);
     $.ajax({
         type:"POST",
         url: "../supporting_php/accept-application.php",
-        data: {ID: id, NICKNAME: nickname, status:$("#status").val(), type: true},
+        data: {ID: id, NICKNAME: nick, status:$("#status").val(), type: true},
         success: function(val){
             $("#dialog").dialog("close");
            getApplList($("select[name='appls_type'] option:checked").val());
