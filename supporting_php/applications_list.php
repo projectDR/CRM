@@ -13,6 +13,7 @@ if($_POST["type"]=="all") {
                             on p.id_departments = d.id
                             left join employee e
                             on a.id_employees = e.id
+                            ORDER BY a.id DESC
 ", Array());
 }else
 {
@@ -52,6 +53,7 @@ foreach ($result as $item)
                         <div class=\"circle\" style=\"background-color:green\"></div>  $item[2] $item[3]
                    </div> 
                    <div class='appl_status'>$item[4]</div>
+                   <div class='appl_employee'>$item[5]</div>
                </div>";
 }
 ?>
