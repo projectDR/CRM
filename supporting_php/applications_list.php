@@ -52,7 +52,6 @@ foreach ($result as $item)
                         <div class=\"circle\" style=\"background-color:green\"></div>  $item[2] $item[3]
                    </div> 
                    <div class='appl_status'>$item[4]</div>
-                   <div class='appl_employee'>$item[5]</div>
                </div>";
 }
 ?>
