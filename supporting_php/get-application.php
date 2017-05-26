@@ -95,10 +95,10 @@ $html = '<form class = "form-horizontal">
 
             $html .= '<div class="form-group">
                 <div class="col-sm-offset-3">
-                    <button class="btn" type="submit" onclick="accept_appl('.$_POST["ID"].','.$_SESSION["login"].')">Принять заявку</button>
+                    <button class="btn" type="submit" onclick="accept_appl('.$_POST["ID"].',\''.$_SESSION["login"].'\')">Принять заявку</button>
                 </div>
                 <div class="col-sm-offset-3">
-                    <button class="btn" type="submit" onclick="change_appl_status('.$_POST["ID"].')">Изменить статус заявки</button>
+                    <button class="btn" type="submit" onclick="change_appl_status('.$_POST["ID"].',\''.$_SESSION["login"].'\')">Изменить статус заявки</button>
                 </div>
             
             </div>
