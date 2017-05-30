@@ -1,6 +1,7 @@
 <?php
 require_once("../classes/DBWorking_class.php");
 $db = new DBWorking_class("project_bd", "Root123");
+
 if($_POST["type"]=="all") {
     $result = $db->select("select a.id, urgency, department_name, at.appl_type_name,aps.status_name, e.employee_name
                             from application_status aps join application a 
@@ -30,6 +31,8 @@ if($_POST["type"]=="all") {
                             on a.id_employees = e.id
                             where a.id_status=$1", Array($_POST["type"]));
 }
+
+
 foreach ($result as $item)
 {
     if($item[1]==0)
@@ -55,5 +58,6 @@ foreach ($result as $item)
                    <div class='appl_status'>$item[4]</div>
                    <div class='appl_employee'>$item[5]</div>
                </div>";
+
 }
 ?>
