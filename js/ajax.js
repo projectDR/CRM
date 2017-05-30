@@ -93,6 +93,9 @@ function getApplication(id){
             var res = jQuery.parseJSON(appl);
             $("#dialog").html(res.appl_form);
             $( "#dialog" ).dialog( "open" );
+            if (res.values[7])
+               $("#employees option[value='"+res.values[7]+"'").prop('selected', true);
+
             $("#status option[value='"+res.values[6]+"'").prop('selected', true);
             if (res.values[0]==0)
                 $("#urgency").css({"background-color": "red"});
@@ -120,8 +123,9 @@ function accept_appl(id, nick)
         url: "../supporting_php/accept-application.php",
         data: {ID: id, NICKNAME: nick},
         success: function(){
+            //getApplList("all");
             $("#dialog").dialog("close");
-            getApplList($("select[name='appls_type'] option:checked").val());
+            location.reload();
         },
         error: function()
         {
@@ -136,14 +140,15 @@ function change_appl_status(id, nick) {
     if(nick ==undefined) {
        nick =$("#employees").val();
     }
+
         $.ajax({
             type: "POST",
             url: "../supporting_php/accept-application.php",
             data: {ID: id, NICKNAME: nick, status: $("#status").val(), type: true},
             success: function (val) {
+               // getApplList("all");
                 $("#dialog").dialog("close");
-                getApplList($("select[name='appls_type'] option:checked").val());
-                //location.reload();
+                location.reload();
             },
             error: function () {
                 alert("don't accept application");

@@ -33,8 +33,9 @@
     <div id="dialog">
     </div>
     <script src="js/ajax.js"></script>
-    <?php if(isset($_SESSION["type"])) echo '
+    <?php  if(isset($_SESSION["type"])) echo '
     <script>
+    
         getSwitches();
         if(window.location.hash == "#application_list")
             {
@@ -47,11 +48,6 @@
             }
         
     </script> ';
-    ?>  <!-- script>
-        alert(22);
-        $("select[name='appls_type']").change(function () {
-            getApplList($("select[name='appls_type'] option:checked").val());
-        });
-    </script -->
+    ?>
     </body>
 </html>
