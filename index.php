@@ -5,9 +5,9 @@
     <title>Title</title>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="js/copyright.js"></script>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,8 +33,9 @@
     <div id="dialog">
     </div>
     <script src="js/ajax.js"></script>
-    <?php if(isset($_SESSION["type"])) echo '
+    <?php  if(isset($_SESSION["type"])) echo '
     <script>
+    
         getSwitches();
         if(window.location.hash == "#application_list")
             {
@@ -47,11 +48,6 @@
             }
         
     </script> ';
-    ?>  <!-- script>
-        alert(22);
-        $("select[name='appls_type']").change(function () {
-            getApplList($("select[name='appls_type'] option:checked").val());
-        });
-    </script -->
+    ?>
     </body>
 </html>
