@@ -54,7 +54,8 @@ $(document).ready(function () {
                 description: $("#description").val()
             },
             success: function (response) {
-                alert("Данные успешно добавлены \n" + response);
+                alert("Заявка принята. Вашей заявке присвоен " + response +
+                    ", по которому вы сможете отследить её статус в дальнейшем.");
             },
             error: function () {
                 alert("Не пошло");

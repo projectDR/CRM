@@ -12,6 +12,7 @@ $login = $_POST["login"];
 $password = $_POST["password"];
 $au = new Authentication_class();
 $result = $au->verify($login, $password);
+
 if($result !== null)
 {
     $_SESSION["fio"] = $result[0][1];

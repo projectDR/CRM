@@ -92,7 +92,34 @@ function verify() {
     });
 }
 
+function get_appl_status() {
+    id = $("#applid").val();
+    if(!id)
+    {
+        alert("Не указан номер заявки");
+        return;
+    }
+    $.ajax({
+        type:"POST",
+        url: "../supporting_php/application_status.php",
+        data: {applid: id},
+        success: function (form) {
+            $("#applid").val(null);
+            $("#dialog").html(form);
+            $( "#dialog" ).dialog( "open" );
+        },
+        error: function () {
+            alert("вместо формы мне втирают дичь");
+        }
+        });
+}
+
 function log_out() {
     url = "../reg_auth/log-out.php";
+    $(location).attr('href', url);
+}
+
+function profile() {
+    url = "../reg_auth/profile.php";
     $(location).attr('href', url);
 }
