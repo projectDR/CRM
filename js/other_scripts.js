@@ -13,106 +13,33 @@ $( function() {
     });
 });
 
-function get_reg_auth_form(tp) {
+
+function switchOnChange(){
+    window.location.hash = "#application_list";
+    getApplList($("select[name='appls_type'] option:checked").val());
+}
+
+function getSwitches() {
     $.ajax({
         type:"POST",
-        url: "../reg_auth/login_auth_form.php",
-        data: {type: tp},
-        success: function (form) {
-            $("#dialog").html(form);
-            $( "#dialog" ).dialog( "open" );
+        url: "../supporting_php/get_switches.php",
+        success: function(val){
+            var res = jQuery.parseJSON(val);
+            var s = $("<select name='appls_type' onchange='switchOnChange()'/>");
+            $("<option />", {value: 'all', text: 'все заявки', selected:'selected'}).appendTo(s);
+            for(var i=0; i< res.length; i++) {
+                $("<option />", {value: res[i][0], text: res[i][1]}).appendTo(s);
+            }
+            s.appendTo(".switches");
         },
-        error: function () {
-            alert("вместо формы мне втирают дичь");
+        error: function()
+        {
+            alert("don't get swithes");
         }
+
     });
 }
 
-function add_user() {
-    if($("#password").val() !== $("#password-rep").val())
-    {
-        alert("Пароли не совпадают");
-        return;
-    }
-    if($("#password").val().trim() == '' || $("#password").val() === null)
-    {
-        alert("Пароль пуст");
-        $("#password").clear();
-        return;
-    }
-    $.ajax({
-        type:"POST",
-        url: "../supporting_php/add_user.php",
-        data: {
-            fio: $("#fio").val(),
-            staff: $("#staff").val(),
-            login: $("#login").val(),
-            passsword: $("#password").val()
-        },
-        success: function (response) {
-            if(response == "fail")
-            {
-                alert("Логин уже существует");
-                return;
-            }
-            alert("Данные успешно добавлены \n" + response);
-            $( "#dialog" ).dialog( "close" );
-        },
-        error: function () {
-            alert("Не пошло добавление");
-        }
-    });
-}
-
-function verify() {
-    $.ajax({
-        type:"POST",
-        url: "../reg_auth/verify_user.php",
-        data: {
-            login: $("#login").val(),
-            password: $("#password").val()
-        },
-        success: function (response) {
-            //alert("Существование юзера: " + response);
-           $( "#dialog" ).dialog( "close" );
-            var res = jQuery.parseJSON(response);
-            if(res[0][2]=="f")
-            {
-                window.location.hash = "#application_list";
-            }
-            else if (res[0][2]=="t")
-            {
-                window.location.hash = "#employees_list";
-            }
-            location.reload();
-        },
-        error: function () {
-            alert("Не пошло");
-        }
-    });
-}
-
-function get_appl_status() {
-    id = $("#applid").val();
-    if(!id)
-    {
-        alert("Не указан номер заявки");
-        return;
-    }
-    $.ajax({
-        type:"POST",
-        url: "../supporting_php/application_status.php",
-        data: {applid: id},
-        success: function (form) {
-            $("#applid").val(null);
-            $("#dialog").html(form);
-            $( "#dialog" ).dialog( "open" );
-        },
-        error: function () {
-            alert("вместо формы мне втирают дичь");
-        }
-        });
-}
 
 function log_out() {
     url = "../reg_auth/log-out.php";

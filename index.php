@@ -32,7 +32,13 @@
     </section>
     <div id="dialog">
     </div>
-    <script src="js/ajax.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/get_application.js"></script>
+    <script src="js/set_application.js"></script>
+    <script src="js/employee.js"></script>
+    <script src="js/reg_auth.js"></script>
+    <script src="js/other_scripts.js"></script>
+
     <?php  if(isset($_SESSION["type"])) echo '
     <script>
     
