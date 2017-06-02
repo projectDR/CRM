@@ -9,7 +9,7 @@
         <label for="username" class="col-sm-3 control-label">Имя пользователя</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" id = "username"
-                   pattern="^[А-Яа-яЁё\s]+$" required>
+                   pattern="^[А-яЁё\s]{3,}$" required>
         </div>
     </div>
     <div class="form-group">

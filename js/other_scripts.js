@@ -47,6 +47,20 @@ function log_out() {
 }
 
 function profile() {
-    url = "../reg_auth/profile.php";
-    $(location).attr('href', url);
+    /*url = "../reg_auth/profile.php";
+    $(location).attr('href', url);*/
+
+    $.ajax({
+        type:"POST",
+        url: "../reg_auth/profile.php",
+        success: function(result){
+            $("#dialog").html(result);
+            $( "#dialog" ).dialog( "open" );
+        },
+        error: function()
+        {
+            alert("don't get application");
+        }
+
+    });
 }

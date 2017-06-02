@@ -26,39 +26,45 @@ echo '
     <form class = "form-horizontal">
     <h1 class="h1">Статус заявки</h1>
     <div class="form-group">
-        <label for="username" class="col-sm-3 control-label">Номер заявки</label>
+        <label for="applnum" class="col-sm-3 control-label">Номер заявки</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id = "username" value="'.$result[0].'" disabled>
+            <input type="text" class="form-control" id = "applnum" value="'.$result[0].'" disabled>
         </div>
     </div>
     <div class="form-group">
-        <label for="username" class="col-sm-3 control-label">Статус</label>
+        <label for="status" class="col-sm-3 control-label">Статус</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id = "username" value="'.$result[6].'" disabled>
+            <input type="text" class="form-control" id = "status" value="'.$result[6].'" disabled>
         </div>
     </div>
     <div class="form-group">
-        <label for="username" class="col-sm-3 control-label">ФИО заявителя</label>
+        <label for="cons" class="col-sm-3 control-label">Исполнитель</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id = "username" value="'.$result[1].'" disabled>
+            <input type="text" class="form-control" id = "cons" value="'.$result[7].'" disabled>
         </div>
     </div>
     <div class="form-group">
-        <label for="username" class="col-sm-3 control-label">Тип заявки</label>
+        <label for="fio" class="col-sm-3 control-label">ФИО заявителя</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id = "username" value="'.$result[2].'" disabled>
+            <input type="text" class="form-control" id = "fio" value="'.$result[1].'" disabled>
         </div>
     </div>
     <div class="form-group">
-        <label for="username" class="col-sm-3 control-label">Должность заявителя</label>
+        <label for="type" class="col-sm-3 control-label">Тип заявки</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id = "username" value="'.$result[3].'" disabled>
+            <input type="text" class="form-control" id = "type" value="'.$result[2].'" disabled>
         </div>
     </div>
     <div class="form-group">
-        <label for="username" class="col-sm-3 control-label">Срочность</label>
+        <label for="position" class="col-sm-3 control-label">Должность заявителя</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id = "username" value="'.$urgency.'" disabled>
+            <input type="text" class="form-control" id = "position" value="'.$result[3].'" disabled>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="urgency" class="col-sm-3 control-label">Срочность</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id = "urgency" value="'.$urgency.'" disabled>
         </div>
     </div>
     <div class="form-group">

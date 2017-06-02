@@ -15,7 +15,7 @@ class Application_class
 
     function validate()
     {
-        $rus_pattern = "^[А-я\s]{3,}$";
+        $rus_pattern = "^[А-яЁё\s]{3,}$";
 
         return !empty($this->username) && !empty($this->position) && !empty($this->brtype) && mb_ereg_match($rus_pattern, $this->username);
     }
@@ -26,11 +26,13 @@ class Application_class
         /*$appl = $db->select("SELECT * FROM application WHERE id=$1",[$id]);
         $appl_tp = $db->select("SELECT appl_type_name FROM application_type WHERE id=$1", [$appl[0][2]]);
         $position = $db->select("SELECT position_name FROM position WHERE id=$1", [$appl[0][3]]);*/
-        $appl = $db->select("SELECT a.id, a.client_fio, aty.appl_type_name, pos.position_name, a.urgency, a.description, ast.status_name 
+        $appl = $db->select("SELECT a.id, a.client_fio, aty.appl_type_name, pos.position_name, a.urgency, 
+                                      a.description, ast.status_name, e.employee_name
                                     FROM application a 
                                     join application_type aty on a.id_application_types=aty.id
                                     join position pos on a.id_position=pos.id
                                     join application_status ast on a.id_status=ast.id
+                                    left join employee e on a.id_employees = e.id
                                     WHERE a.id=$1", [$id]);
         return $appl[0];
     }

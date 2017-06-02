@@ -54,7 +54,7 @@ class Authentication_class
 
         $pas_pattern = "^[A-z0-9.,!&$@\/*|+-]{3,}$"; //for password
         $lat_pattern = "^[A-z0-9]{3,}$"; //for login
-        $rus_pattern = "^[А-я\s]{3,}$"; //rus names
+        $rus_pattern = "^[А-яЁё\s]{3,}$"; //rus names
 
         return empty($result) && !empty($this->username) && !empty($this->password) && !empty($this->login) &&
             mb_ereg_match($rus_pattern, $this->username) &&

@@ -34,8 +34,9 @@ function departmentOnChange(){
 
 
 $("#send_btn").click(function(){
+    console.log("в ф-ии кнопки формы");
+    var reg = /^[а-яА-ЯЁё\s-]{3,}$/;
 
-    var reg = /^[а-яА-Я\s-]{3,}$/;
     if(!reg.test($("#username").val()))
     {
         $("#username").css("background-color", "red");
@@ -52,13 +53,12 @@ $("#send_btn").click(function(){
             description: $("#description").val()
         },
         success: function (response) {
-            alert("Заявка принята. Вашей заявке присвоен " + response +
-                ", по которому вы сможете отследить её статус в дальнейшем.");
+            alert("Заявка принята. Вашей заявке присвоен " + response + ", по которому вы сможете отследить её статус в дальнейшем.");
         },
         error: function () {
             alert("Не пошло");
         }
-    })
+    });
 })
 
 
