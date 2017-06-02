@@ -29,7 +29,8 @@ if($_POST["type"]=="all") {
                             on p.id_departments = d.id
                             left join employee e
                             on a.id_employees = e.id
-                            where a.id_status=$1", Array($_POST["type"]));
+                            where a.id_status=$1
+                            ORDER BY a.id DESC", Array($_POST["type"]));
 }
 
 

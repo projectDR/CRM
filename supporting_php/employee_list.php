@@ -13,7 +13,7 @@ $result = $db->select("select a.id_application_types, at.appl_type_name, a.id_em
                             group by  e.employee_name,at.appl_type_name, a.id_application_types, a.id_employees", Array());
 
 $appl_type = $db->select("select * from application_type a", Array());
-$employee = $db->select("select * from employee e", Array());
+$employee = $db->select("select * from employee e WHERE e.employee_type = 'false'", Array());
 
 
 $table = "<div class='employees'><table>";

@@ -11,8 +11,14 @@ if(!empty($_POST["ID"]))
 (select e.id from employee e where nickname =$1), id_status = $2 where application.id = $3',
             Array($_POST["NICKNAME"], $_POST["status"], $_POST["ID"]));
     }
+    else if ($_SESSION["type"]=="f")
+    {
+        $db->query( 'update application set id_employees= 
+        (select e.id from employee e where nickname =$1), id_status = 3 where application.id =$2',
+        Array($_POST["NICKNAME"], $_POST["ID"]));
+    }
     else $db->query( 'update application set id_employees= 
-(select e.id from employee e where nickname =$1), id_status = 3 where application.id =$2',
+        (select e.id from employee e where nickname =$1), id_status = 2 where application.id =$2',
         Array($_POST["NICKNAME"], $_POST["ID"]));
 }
 ?>
