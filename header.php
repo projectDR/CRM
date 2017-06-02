@@ -18,7 +18,7 @@
                           <button type="button" class="btn btn-default navbar-btn"
                                     id="log-in-button" onclick="get_reg_auth_form(\'login\')">Войти</button>
                           <button type="button" class="btn btn-default navbar-btn"
-                                    id="log-up-button " onclick="get_reg_auth_form(\'create\')">Зарегестрироваться</button>';
+                                    id="log-up-button " onclick="get_reg_auth_form(\'create\')">Зарегистрироваться</button>';
                 }
                 else if ($_SESSION["type"]=="f"){
                     echo ' <li><a href="#application_list" onclick="getApplList(\'all\')">Список заявок</a></li>
